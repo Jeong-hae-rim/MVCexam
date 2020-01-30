@@ -35,7 +35,7 @@ public class CalcServlet extends HttpServlet {
 			result = num1 / num2 ;
 			break;
 			} else {
-				System.out.println("오류의 원인 : 나눗셈 연산 시 두 번째 숫자는 0일 수 없습니다.");
+				request.setAttribute("result", "나눗셈 연산 시 두 번째 숫자는 0일 수 없습니다.");
 				request.getRequestDispatcher("/jspexam/errorResult.jsp").
 		        forward(request, response);
 				break;

@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1>요청을 처리하는 동안 오류가 발생했습니다.</h1>
-<h2>오류의 원인 : <span style="color:magenta">나눗셈 연산 시 두 번째 숫자는 0일 수 없습니다.</span></h2>
+<h2>오류의 원인 : <span style="color:magenta"><%=request.getAttribute("result")%></span></h2>
 <br><br>
 <a href="<%=request.getHeader("referer")%>">입력화면</a>
 </body>

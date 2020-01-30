@@ -9,8 +9,9 @@
 <body>
 <h1>연산 요청 결과</h1>
 <hr>
-결과 :
-	<%=request.getAttribute("result")%><br>
+<h2>결과 :
+	<span style="color:magenta"><%=request.getAttribute("result")%></span></h2>
+	<br>
 	<a href="<%=request.getHeader("referer")%>">입력화면</a>
 </body>
 </html>

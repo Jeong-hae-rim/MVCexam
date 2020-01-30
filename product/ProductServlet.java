@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -17,6 +18,7 @@ public class ProductServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html; charset=UTF-8");
 		String pid = request.getParameter("pid");
 		HttpSession session = request.getSession();
 		if(session.getAttribute("list") == null) {
@@ -27,8 +29,14 @@ public class ProductServlet extends HttpServlet {
 			vo.setApple(1);
 		}else if(pid.equals("p002")) {
 			vo.setBanana(1);
-		}else{
+		}else if(pid.equals("p003")) {
 			vo.setHanra(1);
+		} else {
+			session.invalidate();
+			PrintWriter out = response.getWriter();
+			String str = "{\"msg\" : \"장바구니가 비워졌습니다.\"}";
+	        out.print(str);
+	        return;
 		}
 		
 		request.getRequestDispatcher("/jspexam/productView.jsp").

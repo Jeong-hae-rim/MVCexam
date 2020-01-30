@@ -8,8 +8,8 @@
 </head>
 <body>
 <h1>요청을 처리하는 동안 오류가 발생했습니다.</h1>
-<h2>오류의 원인 : <span style="color:magenta"><%=request.getAttribute("result")%></span></h2>
+<h2>오류의 원인 : <span style="color:magenta">${requestScope.result}</span></h2>
 <br><br>
-<a href="<%=request.getHeader("referer")%>">입력화면</a>
+<a href="${header.referer}">입력화면</a>
 </body>
 </html>

@@ -10,8 +10,8 @@
 <h1>연산 요청 결과</h1>
 <hr>
 <h2>결과 :
-	<span style="color:magenta"><%=request.getAttribute("result")%></span></h2>
+	<span style="color:magenta">${requestScope.result}</span></h2>
 	<br>
-	<a href="<%=request.getHeader("referer")%>">입력화면</a>
+	<a href="${header.referer}">입력화면</a>
 </body>
 </html>

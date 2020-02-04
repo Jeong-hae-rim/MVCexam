@@ -145,32 +145,33 @@ td:nth-child(3) {
 	</script>
 	<div id="write" style="display: none">
 		<hr style="width: 50%;">
-		<h2 id="divT">뉴스 작성</h2>
+		<h2 id="divT" style="color : #ffffff;">뉴스 작성</h2>
 		<form method="post" action="/mvc/news">
-			<input type="hidden" name="action" value="insert"> <input
-				id="n_writer" style="width: 300px" type="text" name="writer"
-				placeholder="작성자명을 입력하세요"> <br> <input id="n_title"
-				style="width: 300px" type="text" name="title"
+			<input type="hidden" name="action" value="insert"> 
+			<input id="n_writer" style="width: 500px; text-align:left;" type="text" name="writer"
+			       placeholder="작성자명을 입력하세요"><br> 
+			<input id="n_title" style="width: 500px; text-align:left;" type="text" name="title"
 				placeholder="제목을 입력하세요"> <br>
-			<textarea id="n_content" style="width: 300px; height: 200px"
-				name="content" placeholder="내용을 입력하세요"> </textarea>
-			<br> <input type="submit" value="저장"> <input
-				type="reset" value="재작성"> <input onclick="back();"
-				type="button" value="취소">
+			<textarea id="n_content" style="width: 500px; height: 200px; text-align:left;" name="content" 
+			    placeholder="내용을 입력하세요"> </textarea>
+			<br> 
+			<input type="submit" value="저장"> 
+			<input type="reset" value="재작성"> 
+			<input onclick="back();" type="button" value="취소">
 		</form>
 	</div>
 
 	<div id="update" style="display: none">
 		<hr style="width: 50%;">
-		<h2 id="divT">뉴스 내용</h2>
+		<h2 id="divT" style="color : #ffffff;">뉴스 내용</h2>
 		<form method="post" action="/mvc/news">
 			<input type="hidden" name="action" value="update"> <input
 				type="hidden" name="id" value="${read.id}"> <input
-				id="writer" style="width: 300px" type="text" name="writer"
+				id="writer" style="width: 500px; text-align:left;" type="text" name="writer"
 				value="${read.writer}"> <br> <input id="title"
-				style="width: 300px" type="text" name="title" value="${read.title}">
+				style="width: 500px; text-align:left;" type="text" name="title" value="${read.title}">
 			<br>
-			<textarea id="content" style="width: 300px; height: 200px"
+			<textarea id="content" style="width: 500px; height: 200px; text-align:left;"
 				name="content">${read.content}</textarea>
 			<br> <input type="submit" value="수정"> <input
 				onclick="del();" type="button" value="삭제"> <input

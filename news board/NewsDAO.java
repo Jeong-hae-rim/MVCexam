@@ -105,14 +105,14 @@ public class NewsDAO {
 		return vo;
 
 	}
-
-	public List<NewsVO> search(String key, String searchType) {
+	
+	public List<NewsVO> listWriter(String writer) {
 		List<NewsVO> list = new ArrayList<>();
 		try (Connection conn = connectDB()) {
 				Statement stmt = conn.createStatement();
 				ResultSet rs = stmt.executeQuery(
-						"select id, writer, title, content"
-								+ "from meeting where title like '%" + key + "%'"); {
+						"select id, writer, title, content, to_char(writedate, 'yyyy-mm-dd') writedate, cnt "
+								+ "from news where writer like '%" + writer + "%'"); {
 			NewsVO vo;
 			while (rs.next()) {
 				vo = new NewsVO();
@@ -120,12 +120,45 @@ public class NewsDAO {
 				vo.setWriter(rs.getString(2));
 				vo.setTitle(rs.getString(3));
 				vo.setContent(rs.getString(4));
+				vo.setWritedate(rs.getString(5));
+				vo.setCnt(rs.getInt(6));
 				list.add(vo);
 			}
 		}
 		}catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return list;
+	}
+		
+
+	public List<NewsVO> search(String key, String searchType){
+		List<NewsVO> list = new ArrayList<>();
+		if (searchType.contentEquals("listwriter")) {
+			list = listWriter(key);
+		} else {
+		try (Connection conn = connectDB()) {
+				Statement stmt = conn.createStatement();
+				ResultSet rs = stmt.executeQuery(
+						"select id, writer, title, content, to_char(writedate, 'yyyy-mm-dd') writedate, cnt "
+								+ "from news where "+searchType+" like '%" + key + "%'"); {
+			NewsVO vo;
+			while (rs.next()) {
+				vo = new NewsVO();
+				vo.setId(rs.getInt(1));
+				vo.setWriter(rs.getString(2));
+				vo.setTitle(rs.getString(3));
+				vo.setContent(rs.getString(4));
+				vo.setWritedate(rs.getString(5));
+				vo.setCnt(rs.getInt(6));
+				list.add(vo);
+			}
+		}
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
 		return list;
 	}
 
@@ -181,5 +214,9 @@ public class NewsDAO {
 		return result;
 
 	}
+
+
+
+
 
 }

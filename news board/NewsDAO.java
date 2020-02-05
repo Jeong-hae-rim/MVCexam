@@ -22,7 +22,7 @@ public class NewsDAO {
 			e.printStackTrace();
 		}
 		try {
-			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "jdbctest", "jdbctest");
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@70.12.115.183:1521:XE", "jdbctest", "jdbctest");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

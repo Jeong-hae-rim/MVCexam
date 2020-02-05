@@ -62,9 +62,7 @@ td:nth-child(3) {
 	%>
 
 	<h1 style="color : #ffffff; text-shadow: 1px 2px 2px #33334d; text-align: center;">뉴스 게시판</h1>
-	<br>
-	<br>
-	<br>
+	<br><br><br>
 
 	<DIV id="search" style="margin-left: 350px;">
 		<FORM method='GET' action='/mvc/news'>
@@ -92,18 +90,18 @@ td:nth-child(3) {
 			for (NewsVO vo : list) {
 		%>
 		<tr id="b3">
-			<td id="b4" style="width: 50px; text-align: center;"
-				class='<%=vo.getId()%>'><%=vo.getId()%></td>
-			<td id="b4" style="width: 300px; text-align: center;"
-				class='<%=vo.getId()%>'
-				onclick="location.href='/mvc/news?action=read&id=<%=vo.getId()%>'"><%=vo.getTitle()%></td>
-			<td id="b4" style="width: 100px; text-align: center;"
-				class='<%=vo.getId()%>'
-				onclick="location.href='/mvc/news?searchtype=writer&key=<%=vo.getWriter()%>'"><%=vo.getWriter()%></td>
-			<td id="b4" style="width: 200px; text-align: center;"
-				class='<%=vo.getId()%>'><%=vo.getWritedate()%></td>
-			<td id="b4" style="width: 50px; text-align: center;"
-				class='<%=vo.getId()%>'><%=vo.getCnt()%></td>
+			<td id="b4" style="width: 50px; text-align: center;"class='<%=vo.getId()%>'>
+			    <%=vo.getId()%></td>
+			<td id="b4" style="width: 300px; text-align: center;" class='<%=vo.getId()%>'
+				            onclick="location.href='/mvc/news?action=read&id=<%=vo.getId()%>'">
+				<%=vo.getTitle()%></td>
+			<td id="b4" style="width: 100px; text-align: center;" class='<%=vo.getId()%>'
+				            onclick="location.href='/mvc/news?searchtype=writer&key=<%=vo.getWriter()%>'">
+				<%=vo.getWriter()%></td>
+			<td id="b4" style="width: 200px; text-align: center;" class='<%=vo.getId()%>'>
+			    <%=vo.getWritedate()%></td>
+			<td id="b4" style="width: 50px; text-align: center;" class='<%=vo.getId()%>'>
+			    <%=vo.getCnt()%></td>
 		</tr>
 		<%
 			}
@@ -116,7 +114,14 @@ td:nth-child(3) {
 	<script>
 		alert('${ msg }');
 	</script>
-
+	  <h3> ${ msg }</h3>
+	<%
+		} else if (request.getAttribute("msg2") != null) {
+	%>
+	<script>
+		alert('${ msg2 }');
+	</script>
+	  <h3> ${ msg2 }</h3>
 	<%
 		}
 	%>
@@ -165,26 +170,20 @@ td:nth-child(3) {
 		<hr style="width: 50%;">
 		<h2 id="divT" style="color : #ffffff;">뉴스 내용</h2>
 		<form method="post" action="/mvc/news">
-			<input type="hidden" name="action" value="update"> <input
-				type="hidden" name="id" value="${read.id}"> <input
-				id="writer" style="width: 500px; text-align:left;" type="text" name="writer"
-				value="${read.writer}"> <br> <input id="title"
-				style="width: 500px; text-align:left;" type="text" name="title" value="${read.title}">
-			<br>
-			<textarea id="content" style="width: 500px; height: 200px; text-align:left;"
-				name="content">${read.content}</textarea>
-			<br> <input type="submit" value="수정"> <input
-				onclick="del();" type="button" value="삭제"> <input
-				onclick="back2();" type="button" value="닫기">
+			<input type="hidden" name="action" value="update"> 
+			   <input type="hidden" name="id" value="${read.id}"> 
+			   <input id="writer" style="width: 500px; text-align:left;" type="text" name="writer" value="${read.writer}"> <br> 
+			   <input id="title" style="width: 500px; text-align:left;" type="text" name="title" value="${read.title}"><br>
+			<textarea id="content" style="width: 500px; height: 200px; text-align:left;" name="content">${read.content}</textarea>
+			<br> 
+			<input type="submit" value="수정"> 
+			<input onclick="del();" type="button" value="삭제"> 
+			<input onclick="back2();" type="button" value="닫기">
 		</form>
 	</div>
-
-	<footer> </footer>
-
 </body>
 <script>
-	var id =
-<%=request.getParameter("id")%>
+var id = <%=request.getParameter("id")%>
 	if (id != null) {
 		document.getElementById("update").style.display = 'block';
 	}
